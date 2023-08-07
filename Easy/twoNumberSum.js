@@ -43,3 +43,24 @@ function twoNumberSum1(array, targetSum) {
     return []
 }
 console.log(twoNumberSum1(array, targetSum))
+
+// O(n log (n)) time complexity | O(1) Space
+// third solution involving two pointers
+function twoNumberSum2(array, targetSum) {
+    array.sort((a,b) => a - b);
+    let left = 0;
+    let right = array.length - 1;
+    while(left < right) {
+        const currentSum = array[left] + array[right];
+        if (currentSum === targetSum) {
+            return [array[left], array[right]];
+        } else if (currentSum < targetSum) {
+            left++;
+        } else if (currentSum > targetSum) {
+            right--;
+        }
+    }
+    return [];
+}
+
+console.log(twoNumberSum2(array, targetSum))
